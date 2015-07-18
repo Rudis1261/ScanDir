@@ -3,7 +3,7 @@
 ## Get It
 Use go get to be able to import this code into your project
 
-```bash
+```shell
 go get github.com/drpain/ScanDir
 ```
 
