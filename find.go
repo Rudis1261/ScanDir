@@ -24,8 +24,6 @@ func Find(params ...string) []string {
 		os.Exit(1)
 	}
 
-	found := []string{}
-
 	// Param 1 /directory/path
 	if len(params) > 0 {
 		searchDir = params[0]
@@ -61,12 +59,13 @@ func Find(params ...string) []string {
 
 	// Loop through all the files we found with the walker
 	// Check that it meets the criteria. Extension being the minimum
+	found := []string{}
 	for _, file := range fileList {
 		extension := filepath.Ext(file)
 
 		// Only allow files with an extension
 		if len(extension) == 0 {
-			break
+			continue
 		}
 
 		// Get the file extension but trim the leading .
