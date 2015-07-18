@@ -8,6 +8,7 @@ import (
 	"strings"
 )
 
+var searchDir string = ""
 var findExtension string = ""
 var includeThis string = ""
 var excludeThis string = ""
@@ -15,15 +16,24 @@ var excludeThis string = ""
 // Find specific file types with the filepath.Walk
 func Find(params ...string) []string {
 
-	searchDir := params[0]
-	findExtension = params[1]
-	found := []string{}
-
 	// Break when too few params are provided
-	if len(params) == 2 {
+	if len(params) <= 1 {
+		log.Println("Missing required parameters")
 		log.Println("scandir.Find(\"<FilePath>\", \"Extension\")")
 		log.Println("scandir.Find(\"/path/to/start\", \"jpg\")")
 		os.Exit(1)
+	}
+
+	found := []string{}
+
+	// Param 1 /directory/path
+	if len(params) > 0 {
+		searchDir = params[0]
+	}
+
+	// Param 2, file extension
+	if len(params) > 1 {
+		findExtension = params[1]
 	}
 
 	// Param 3 is optional, include
@@ -63,7 +73,7 @@ func Find(params ...string) []string {
 		extension = extension[1:len(extension)]
 
 		// If the extensions don't match we don't need to continue testing
-		if extension !== findExtension {
+		if extension != findExtension {
 			continue
 		}
 
