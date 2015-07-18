@@ -19,7 +19,7 @@ scandir.Find("/home/user/", "jpg")
 
 
 #### Example 2
-Explicitly look for a string in the directory with the third option.
+Explicitly look for a string in the filepath with the third option. ie: /home/rudi/```Pictures```/Wallpapers/wallpaper1.jpg
 ```
 scandir.Find("/home/user/", "jpg", "Pictures")
 ```
