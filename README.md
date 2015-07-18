@@ -3,7 +3,7 @@
 ## Get It
 Use go get to be able to import this code into your project
 
-```
+```bash
 go get github.com/drpain/ScanDir
 ```
 
@@ -13,28 +13,28 @@ Using it is pretty simple. With  2 required parameters, and 2 optional.
 #### Example 1
 Minimum required options, path and file extension
 
-```
+```go
 scandir.Find("/home/user/", "jpg")
 ```
 
 
 #### Example 2
 Explicitly look for a string in the filepath with the third option. ie: /home/rudi/```Pictures```/Wallpapers/wallpaper1.jpg
-```
+```go
 scandir.Find("/home/user/", "jpg", "Pictures")
 ```
 
 
 #### Example 3
 Let's make sure that we ignore specific files. For example ```thumbs.db``` and stuff like that. But really this would be any string in the path to ignore. Try to not make this too short as this may match things you don't expect.
-```
+```go
 scandir.Find("/home/user/", "jpg", "Pictures", "thumbs.db")
 ```
 
 
 #### Full example
 In this example I look for CSS files, in a root path. And I ensure that the path contains ```assets/css/out```. And lastly I ensure to exclude already minified css files ```min.css```
-```
+```go
 package main
 
 import (
@@ -48,8 +48,6 @@ func main() {
         fmt.Println(file)
     }
 }
-
-
 ```
 
 ## Why the hell would I need it?
