@@ -19,6 +19,13 @@ func Find(params ...string) []string {
 	findExtension = params[1]
 	found := []string{}
 
+	// Break when too few params are provided
+	if len(params) == 2 {
+		log.Println("scandir.Find(\"<FilePath>\", \"Extension\")")
+		log.Println("scandir.Find(\"/path/to/start\", \"jpg\")")
+		os.Exit(1)
+	}
+
 	// Param 3 is optional, include
 	if len(params) > 2 {
 		includeThis = params[2]
